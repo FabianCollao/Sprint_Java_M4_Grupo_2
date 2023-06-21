@@ -9,8 +9,7 @@ public class Capacitacion {
 	private String duracion;
 	private int cantidadAsistentes;
 
-	public Capacitacion() {
-	}
+	public Capacitacion() {}
 
 	public Capacitacion(int identificador, String rutCliente, String dia, String hora, String lugar, String duracion,
 			int cantidadAsistentes) {
@@ -89,5 +88,4 @@ public class Capacitacion {
 	public String mostrarDetalle() {
 		return "La capacitación será en "+ lugar + " a las " + hora + " del día " + dia + ", y durará " + duracion + " minutos";
 	}
-
 }
