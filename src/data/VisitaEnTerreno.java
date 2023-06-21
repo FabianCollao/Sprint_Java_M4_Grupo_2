@@ -1,6 +1,7 @@
 package data;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 public class VisitaEnTerreno {
 	private int idVisitaTerreno;
@@ -9,6 +10,7 @@ public class VisitaEnTerreno {
 	private LocalTime horaAccidente;
 	private String lugar;
 	private String comentarios;
+	private List<Revision>revisiones; 
 
 	public VisitaEnTerreno() {
 	}
@@ -81,6 +83,14 @@ public class VisitaEnTerreno {
 		return "VisitaEnTerreno  \n idVisitaTerreno: " + idVisitaTerreno + " \n rutCliente: " + rutCliente
 				+ " \n fechaAccidente: " + fechaAccidente + " \n horaAccidente: " + horaAccidente + " \n lugar: "
 				+ lugar + " \n comentarios: " + comentarios;
+	}
+
+	public List<Revision> getRevisiones() {
+		return revisiones;
+	}
+
+	public void setRevisiones(List<Revision> revisiones) {
+		this.revisiones = revisiones;
 	}
 
 }
