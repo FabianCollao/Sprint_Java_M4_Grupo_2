@@ -56,7 +56,7 @@ public class Profesional extends Usuario {
 	            System.out.println("El título debe tener entre 10 y 50 caracteres...");
 	        }
 	    }
-	//Método analizarUsuario
+	  //Método analizarUsuario
 	   public void analizarUsuario() {
 	        super.analizarUsuario();
 	        System.out.println("Título: " + titulo);
