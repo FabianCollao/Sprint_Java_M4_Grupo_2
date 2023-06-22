@@ -18,9 +18,9 @@ public class Cliente extends Usuario {
 
 	}
 
-	public Cliente(LocalDate fechaNacimiento, String nombres, String apellidos, int telefono, String afp,
+	public Cliente(String nombre, LocalDate fechaNacimiento, int run, String nombres, String apellidos, int telefono, String afp,
 			SistemaSalud sistemaSalud, String direccion, String comuna, int edad, int rut) {
-		super(nombres + " " + apellidos, fechaNacimiento, rut);
+		super(nombre, fechaNacimiento,run);
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
@@ -30,6 +30,7 @@ public class Cliente extends Usuario {
 		this.comuna = comuna;
 		this.edad = edad;
 		this.rut = rut;
+	
 	}
 
 	// Getters y Setters
@@ -122,8 +123,9 @@ public class Cliente extends Usuario {
 	}
 
 	@Override
-	public void analizarUsuario() {
+	public int analizarUsuario() {
 		super.analizarUsuario();
 		System.out.println(" Dirección: " + direccion + "\n Comuna: " + comuna);
+		return rut;
 	}
 }

@@ -9,7 +9,7 @@ public class Administrativo extends Usuario{
 	String area;
 	String experienciaPrevia;
 	
-	//Método constructor de la clase Administrativo
+	//Mï¿½todo constructor de la clase Administrativo
 	public Administrativo(String nombre,LocalDate fechaNacimiento,
 			int run, String area, String experienciaPrevia) {
 		super(nombre, fechaNacimiento, run);
@@ -17,7 +17,7 @@ public class Administrativo extends Usuario{
 		this.experienciaPrevia = experienciaPrevia;
 	}
 	
-	//Método constructor vacio
+	//Mï¿½todo constructor vacio
 	public Administrativo() {
 	}
 
@@ -38,25 +38,27 @@ public class Administrativo extends Usuario{
 		this.experienciaPrevia = experienciaPrevia;
 	}
 
-	//Método toString
+	//Mï¿½todo toString
 	@Override
 	public String toString() {
-		return super.toString()+"\n área: " + area + "\n experiencia Previa: " + experienciaPrevia;
+		return super.toString()+"\n ï¿½rea: " + area + "\n experiencia Previa: " + experienciaPrevia;
 	}
-	//Método para validar que el area tenga mínimo 5 caracteres, máximo 20
+	//Mï¿½todo para validar que el area tenga mï¿½nimo 5 caracteres, mï¿½ximo 20
 	  public void validarArea(String area) {
 	        if (area.length() >= 5 && area.length() <= 20) {
 	            this.area = area;
 	        } else {
-	            System.out.println("El área debe tener entre 5 y 20 caracteres...");
+	            System.out.println("El ï¿½rea debe tener entre 5 y 20 caracteres...");
 	        }
 	    }
 	
-	  //Método analizarUsuario
-	    public void analizarUsuario() {
+	  //Mï¿½todo analizarUsuario
+	    public int analizarUsuario() {
 	        super.analizarUsuario();
-	        System.out.println("Área: " + area);
+	        System.out.println("ï¿½rea: " + area);
 	        System.out.println("Experiencia previa: " + experienciaPrevia);
+	       
+	        return super.getRun();
 	    }
 	
 }
