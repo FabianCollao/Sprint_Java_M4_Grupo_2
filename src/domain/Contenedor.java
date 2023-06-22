@@ -57,7 +57,8 @@ public class Contenedor {
 			if(asesorias.get(i).analizarUsuario()==buscar.getRun()) {
 				System.out.println("Es igual");
 				
-				
+				asesorias.remove(i);
+				//falta eliminarlo me piló el tiempo ;)
 			}
 		}
 		
