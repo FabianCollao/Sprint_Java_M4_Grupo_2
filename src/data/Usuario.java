@@ -7,15 +7,21 @@ public class Usuario implements IAsesoria {
 	private LocalDate fechaNacimiento;
 	private int run;
 
+	
+	
 	public Usuario() {
-
 	}
-
+	
+	
 	public Usuario(String nombre, LocalDate fechaNacimiento, int run) {
 		super();
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.run = run;
+	}
+
+	public Usuario(int run) {
+		this.run=run;
 	}
 
 	public String getNombre() {
@@ -48,8 +54,9 @@ public class Usuario implements IAsesoria {
 	}
 
 	@Override
-	public void analizarUsuario() {
+	public int analizarUsuario() {
 		System.out.println(" Nombre: " + nombre + "\n Run:  " + run);
+		return run;
 	}
 
 	public String mostrarEdad() {
