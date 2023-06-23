@@ -31,7 +31,7 @@ public class Contenedor {
 
 	public void almacenarCliente(Scanner input) {
 		Cliente cliente = new Cliente();
-		input.nextLine();
+		input.nextLine(); //limpiar buffer cache
 		cliente.setNombre(dato.solicitarRangoValido("Nombre", input, 10, 30));
 		cliente.setFechaNacimiento(dato.solicitarFechaValida("Fecha de Nacimiento (dd/mm/yyyy)", input));
 		cliente.setRun(dato.solicitarRutValido("Run", input));
@@ -63,8 +63,9 @@ public class Contenedor {
 					break;
 				case 1:
 					fechaNac = input.nextLine().trim();
-					salir = dato.validarFecha(fechaNac);
-					profesional.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
+					if(salir = dato.validarFecha(fechaNac)){
+						profesional.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
+					}
 					break;
 				case 2:
 					run = input.nextLine().trim();
