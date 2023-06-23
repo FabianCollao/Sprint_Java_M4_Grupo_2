@@ -1,23 +1,8 @@
 package domain;
 
-import java.time.LocalDate;
 import java.util.Scanner;
-import data.Administrativo;
 import data.Capacitacion;
-import data.Cliente;
-import data.Profesional;
-import data.SistemaSalud;
-import data.Usuario;
-/*
-		 * Finalmente, cree la clase Principal, la que tendrá como objetivo 
-		 * crear una instancia de la clase Contenedor, 
-		 * lo que creará con ello las dos listas que considera esta clase. 
-		 * Posterior a esto, deberá crear un menú principal con nueve opciones: 
-		 * ocho para las acciones indicadas en el listado anterior, y una opción 
-		 * para salir del programa. En caso de que se ingrese una opción incorrecta, 
-		 * se debe pedir nuevamente. El programa solo terminará una vez que ingrese 
-		 * la opción de salida.
- */
+
 public class Main implements IPrintPantalla {
 
 	public static void main(String[] args) {
@@ -25,7 +10,6 @@ public class Main implements IPrintPantalla {
 		int op;
 		boolean salir = false;
 		Contenedor contenedor = new Contenedor();
-		Usuario usuario;
 		
 		do {
 			System.out.println("       ****** MENÚ ****** ");
@@ -39,25 +23,28 @@ public class Main implements IPrintPantalla {
 			switch (op) {
 			case 1:
 				System.out.println("Ingrese los datos del nuevo Cliente");
-				contenedor.almacenarCliente();
+				contenedor.almacenarCliente(scanner);
 				System.out.println("Cliente creado con éxito");
 				break;
 			case 2:
-				Profesional profesional = new Profesional();// Solicitar e ingresar los datos a profesional
-				contenedor.almacenarProfesional(profesional);
+				System.out.println("Ingrese los datos del nuevo Profesional");
+				contenedor.almacenarProfesional(scanner);
+				System.out.println("Profesional creado con éxito");
 				break;
 			case 3:
-				Administrativo admin = new Administrativo();// Solicitar e ingresar los datos a profesional
-				contenedor.almacenarAdministrativo(admin);
+				System.out.println("Ingrese los datos del nuevo Administrativo");
+				contenedor.almacenarAdministrativo(scanner);
+				System.out.println("Administrativo creado con éxito");
 				break;
 			case 4:
+				System.out.println("Ingrese los datos de la Capacitación");
 				Capacitacion cap = new Capacitacion();// Crear metodo para pasar el String a int (Rut)
 				contenedor.almacenarCapacitacion(cap);
 				break;
 			case 5:
 				System.out.println("Ingrese el rut del usuario para su eliminación ");
-				int rut = scanner.nextInt();
-				contenedor.eliminarUsuario(rut);
+				contenedor.eliminarUsuario(scanner);
+				System.out.println("Usuario eliminado con éxito");
 				break;
 			case 6:
 				contenedor.listarUsuarios();
@@ -79,7 +66,7 @@ public class Main implements IPrintPantalla {
 				System.out.println("Ingrese una opción válida");
 				break;
 			}
-		} while (salir=true);
+		} while (!salir);
 	}
 
 	@Override
