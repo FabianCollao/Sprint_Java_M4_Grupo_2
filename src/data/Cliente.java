@@ -13,9 +13,7 @@ public class Cliente extends Usuario {
 	private int edad;
 	private int rut;
 
-	// Constructores
 	public Cliente() {
-
 	}
 
 	public Cliente(String nombre, LocalDate fechaNacimiento, int run, String nombres, String apellidos, int telefono, String afp,
@@ -33,7 +31,6 @@ public class Cliente extends Usuario {
 	
 	}
 
-	// Getters y Setters
 	public int getRut() {
 		return rut;
 	}

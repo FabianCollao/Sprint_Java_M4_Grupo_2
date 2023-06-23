@@ -28,19 +28,10 @@ public class Contenedor {
 		capacitaciones = new ArrayList<Capacitacion>();
 	}
 
-	public void almacenarCliente() {
-		// permite agregar un nuevo cliente a la lista de instancias dela interface
-		// Asesoria.
-		/* Cliente de prueba:
-		 * Cliente clientePrueba = new Cliente("Maria Castillo",LocalDate.of(1990,03,15),175542267,"Maria Antonietta","Castillo Montenegro",965362782,
-						"Capital",SistemaSalud.Fonasa,"Calle Migración #4455, Las Torres", "Casablanca",33,175542267);
-		   asesorias.add(clientePrueba);
-		 * */
+	public void almacenarCliente(Scanner input) {
 		Cliente cliente = new Cliente();
-		Scanner input = new Scanner(System.in);
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Rut", "Nombres", "Apellidos",
 				"Telefono", "AFP", "Sistema de Salud (Fonasa o Isapre)", "Direccion", "Comuna", "Edad" };
-
 		String nombre = "", fechaNac = "", run = "", rut = "", nombres = "", apellidos = "", telefono = "", afp = "",
 				sistemaSalud = "", direccion = "", comuna = "", edad = "";
 
@@ -49,39 +40,47 @@ public class Contenedor {
 			do {
 				System.out.print("Ingresa " + atributos[i] + ": ");
 				switch (i) {
-				case 0:// Nombre
+				case 0:
 					nombre = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(nombre, 10, 50);
+					cliente.setNombre(nombre);
 					break;
-				case 1:// Fecha nacimiento
+				case 1:
 					fechaNac = input.nextLine().trim();
 					salir = dato.validarFecha(fechaNac);
+					cliente.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
 					break;
-				case 2:// Run
+				case 2:
 					run = input.nextLine().trim();
 					salir = dato.validarRutRun(run, "run");
+					cliente.setRun(Integer.valueOf(run));
 					break;
-				case 3:// Rut
+				case 3:
 					rut = input.nextLine().trim();
 					salir = dato.validarRutRun(rut, "rut");
+					cliente.setRut(Integer.valueOf(rut));
 					break;
-				case 4:// Nombres
+				case 4:
 					nombres = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(nombres, 5, 30);
+					cliente.setNombres(nombres);
 					break;
-				case 5:// Apellidos
+				case 5:
 					apellidos = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(apellidos, 5, 30);
+					cliente.setApellidos(apellidos);
 					break;
-				case 6:// Telefono
+				case 6:
 					telefono = input.nextLine().trim();
 					salir = dato.esObligatorio(telefono);
+					//cliente.setTelefono(telefono);   ///////////////////////////////////////
 					break;
-				case 7:// AFP
+				case 7:
 					afp = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(afp, 4, 30);
+					cliente.setAfp(afp);
 					break;
-				case 8:// SistemaSalud
+				case 8:
 					sistemaSalud = input.nextLine().trim();
 					salir = dato.esObligatorio(sistemaSalud);
 					if (sistemaSalud.toLowerCase().equals("fonasa")) {
@@ -93,46 +92,105 @@ public class Contenedor {
 						salir = false;
 					}
 					break;
-				case 9:// Direccion
+				case 9:
 					direccion = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(direccion, 0, 70);
+					cliente.setDireccion(direccion);
 					break;
-				case 10:// Comuna
+				case 10:
 					comuna = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(comuna, 0, 50);
+					cliente.setComuna(comuna);
 					break;
-				case 11:// Edad
+				case 11:
 					edad = input.nextLine().trim();
 					salir = dato.validarEdad(edad, 0, 150);
+					cliente.setEdad(Integer.valueOf(edad));
 					break;
 				}
 			} while (!salir);
 		}
-		// Resto de atributos del cliente creado
-		cliente.setNombre(nombre);
-		cliente.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
-		cliente.setRun(Integer.valueOf(run));
-		cliente.setRut(Integer.valueOf(rut));
-		cliente.setNombres(nombres);
-		cliente.setApellidos(apellidos);
-		cliente.setAfp(afp);
-		cliente.setDireccion(direccion);
-		cliente.setComuna(comuna);
-		cliente.setEdad(Integer.valueOf(edad));
 		asesorias.add(cliente);
-
 	}
 
-	public void almacenarProfesional(Profesional profesional) {
-		// permite agregar un nuevo profesional a la lista de instancias de la interface
-		// Asesoria.
+	public void almacenarProfesional(Scanner input) {
+		Profesional profesional = new Profesional();
+		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run","Título","Fecha de ingreso"};
+		String nombre = "", fechaNac = "", run = "", rut = "", titulo= "", fechaIngreso="";
+		
+		boolean salir = false;
+		for (int i = 0; i < atributos.length; i++) {
+			do {
+				System.out.print("Ingresa " + atributos[i] + ": ");
+				switch (i) {
+				case 0:
+					nombre = input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(nombre, 10, 50);
+					profesional.setNombre(nombre);
+					break;
+				case 1:
+					fechaNac = input.nextLine().trim();
+					salir = dato.validarFecha(fechaNac);
+					profesional.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
+					break;
+				case 2:
+					run = input.nextLine().trim();
+					salir = dato.validarRutRun(run, "run");
+					profesional.setRun(Integer.valueOf(run));
+					break;
+				case 3:
+					titulo= input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(titulo,10, 50);
+					break;
+				case 4:
+					fechaIngreso= input.nextLine().trim();
+					salir = dato.validarFecha(fechaIngreso);
+					break;
+				}
+			} while (!salir);
+		}
 		asesorias.add(profesional);
 	}
 
-	public void almacenarAdministrativo(Administrativo administrativo) {
-		// permite agregar un nuevo administrativo a la lista de instancias de la
-		// interface Asesoria.
-		asesorias.add(administrativo);
+	public void almacenarAdministrativo(Scanner input) {
+		Administrativo admin = new Administrativo();
+		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run","Área","Experiencia previa"};
+		String nombre = "", fechaNac = "", run = "", rut = "", area = "", experienciaPrevia = "";
+		
+		boolean salir = false;
+		for (int i = 0; i < atributos.length; i++) {
+			do {
+				System.out.print("Ingresa " + atributos[i] + ": ");
+				switch (i) {
+				case 0:
+					nombre = input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(nombre, 10, 50);
+					admin.setNombre(nombre);
+					break;
+				case 1:
+					fechaNac = input.nextLine().trim();
+					salir = dato.validarFecha(fechaNac);
+					admin.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
+					break;
+				case 2:
+					run = input.nextLine().trim();
+					salir = dato.validarRutRun(run, "run");
+					admin.setRun(Integer.valueOf(run));
+					break;
+				case 3:
+					area= input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(area,5,20);
+					admin.setArea(area);
+					break;
+				case 4:
+					experienciaPrevia= input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(experienciaPrevia,20, 100);
+					admin.setExperienciaPrevia(experienciaPrevia);
+					break;
+				}
+			} while (!salir);
+		}
+		asesorias.add(admin);
 	}
 
 	public void almacenarCapacitacion(Capacitacion capacitacion) {
@@ -142,28 +200,16 @@ public class Contenedor {
 
 	}
 
-	public void eliminarUsuario(int run) {
-		// permite eliminar un usuario desde la lista de interfaces de Asesoría acuerdo
-		// con el RUN del usuario.
-		Usuario buscar= new Usuario(run);
-
+	public void eliminarUsuario(Scanner input) {
+		Usuario buscar= new Usuario(input.nextInt());
 		for(int i=0; i<asesorias.size(); i++) {
 			if(asesorias.get(i).analizarUsuario()==buscar.getRun()) {
-				System.out.println("Es igual");
-				
 				asesorias.remove(i);
-				//falta eliminarlo me piló el tiempo ;)
 			}
 		}
-		
-		
 	}
 
 	public void listarUsuarios() {
-		/*
-		 * permite desplegar la lista completa de usuarios, independiente del tipo. En
-		 * este método solo se deben desplegar los datos de la clase usuario.
-		 */
 		int i=1;
 		for (IAsesoria asesoria : asesorias) {
 			System.out.println("Usuario #"+i);
@@ -173,9 +219,6 @@ public class Contenedor {
 	}
 
 	public void listarusuariosPorTipo(String tipo) {
-		// recibe un tipo de usuario (cliente, administrador o
-		// profesional), y retorna los datos respectivos según el tipo de usuario
-
 		if(asesorias.isEmpty()) {
 			System.out.println("** No hay nigun usuario registrado **");
 		}else {
@@ -195,7 +238,6 @@ public class Contenedor {
 			} else {
 				System.out.println("Opcion no válida");
 			}
-			
 		}
 	}
 
