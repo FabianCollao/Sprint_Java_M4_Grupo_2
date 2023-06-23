@@ -38,10 +38,8 @@ public class Main implements IPrintPantalla {
 			op = scanner.nextInt();
 			switch (op) {
 			case 1:
-				System.out.println("Ingrese los Datos del nuevo Cliente");
-				Cliente cliente = new Cliente("Maria Castillo",LocalDate.of(1990,03,15),175542267,"Maria Antonietta","Castillo Montenegro",965362782,
-						"Capital",SistemaSalud.Fonasa,"Calle Migración #4455, Las Torres", "Casablanca",33,175542267);// Solicitar e ingresar los datos a cliente
-				contenedor.almacenarCliente(cliente);
+				System.out.println("Ingrese los datos del nuevo Cliente");
+				contenedor.almacenarCliente();
 				System.out.println("Cliente creado con éxito");
 				break;
 			case 2:
@@ -65,6 +63,11 @@ public class Main implements IPrintPantalla {
 				contenedor.listarUsuarios();
 				break;
 			case 7:
+				System.out.println("-Seleccionaste Listar Usuarios por tipo");
+				System.out.print("Escribe el tipo de usuario (Cliente, Profesional o Administrativo): ");
+				scanner.nextLine(); //Para limpiar el buffer del nextInt
+				String tipo = scanner.nextLine();
+				contenedor.listarusuariosPorTipo(tipo);
 				break;
 			case 8:
 				break;
