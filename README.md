@@ -1,5 +1,10 @@
 ## Sprint Java Módulo 4 Grupo_2
 
+### CONTEXTO
+
+Un grupo de profesionales ha fundado una compañía de asesorías en prevención de riesgos laborales y necesita una solución tecnológica que ayude a administrar los procesos que se deben ejecutar en cada una de las empresas que son clientes de la compañía. Este servicio finalmente pretende ofrecer una solución completa en prevención de riesgos para las empresas a un costo razonable, cumpliendo estrictamente todos los procesos necesarios para dar cumplimiento a la normativa vigente, mejorando los ambientes de trabajo, la productividad, contribuyendo a un ahorro económico.
+
+
 ### PROBLEMA
 
 La empresa no posee un sistema de información que le permita administrar toda la cantidad de 
