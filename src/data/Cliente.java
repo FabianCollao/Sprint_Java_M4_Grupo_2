@@ -106,7 +106,7 @@ public class Cliente extends Usuario {
 	// Metodos de la clase
 	@Override
 	public String toString() {
-		return " Nombres: " + nombres + "\n Apellidos=" + apellidos + "\n Telefono: " + telefono + "\n Afp: "
+		return " Nombres: " + nombres + "\n Apellidos: " + apellidos + "\n Telefono: " + telefono + "\n Afp: "
 				+ afp + "\n Sistema de Salud: " + sistemaSalud + "\n Direccion: " + direccion + "\n Comuna:" + comuna
 				+ "\n Edad: " + edad + "\n rut: " + rut;
 	}
