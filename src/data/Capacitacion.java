@@ -2,7 +2,7 @@ package data;
 
 public class Capacitacion {
 	private int identificador;
-	private String rutCliente;
+	private int rutCliente;
 	private String dia;
 	private String hora;
 	private String lugar;
@@ -11,7 +11,7 @@ public class Capacitacion {
 
 	public Capacitacion() {}
 
-	public Capacitacion(int identificador, String rutCliente, String dia, String hora, String lugar, String duracion,
+	public Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,
 			int cantidadAsistentes) {
 		this.identificador = identificador;
 		this.rutCliente = rutCliente;
@@ -30,11 +30,11 @@ public class Capacitacion {
 		this.identificador = identificador;
 	}
 
-	public String getRutCliente() {
+	public int getRutCliente() {
 		return rutCliente;
 	}
 
-	public void setRutCliente(String rutCliente) {
+	public void setRutCliente(int rutCliente) {
 		this.rutCliente = rutCliente;
 	}
 
@@ -80,9 +80,9 @@ public class Capacitacion {
 
 	@Override
 	public String toString() {
-		return "Capacitacion [identificador=" + identificador + ", rutCliente=" + rutCliente + ", dia=" + dia
-				+ ", hora=" + hora + ", lugar=" + lugar + ", duracion=" + duracion + ", cantidadAsistentes="
-				+ cantidadAsistentes + "]";
+		return "Capacitacion: \n Identificador: " + identificador + " \n RutCliente: " + rutCliente + "\n Dia=" + dia
+				+ "\n Hora: " + hora + "\n Lugar: " + lugar + "\n Duracion: " + duracion + "\n Cantidad de Asistentes: "
+				+ cantidadAsistentes;
 	}
 	
 	public String mostrarDetalle() {
