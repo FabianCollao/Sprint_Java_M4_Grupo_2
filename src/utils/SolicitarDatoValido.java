@@ -106,7 +106,7 @@ public class SolicitarDatoValido extends ValidarDatos {
 	public LocalDate solicitarFechaValida(String datoSolicitado, Scanner input) {
 		boolean salir = false;
 		input.reset();
-		LocalDate fecha = LocalDate.of(0, 0, 0);
+		LocalDate fecha =null;
 		String captura = "";
 		do {
 			System.out.print(" Ingresa " + datoSolicitado + ": ");

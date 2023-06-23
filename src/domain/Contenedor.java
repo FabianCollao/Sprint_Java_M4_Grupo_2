@@ -14,13 +14,14 @@ import data.Profesional;
 import data.SistemaSalud;
 import data.Usuario;
 import utils.ValidarDatos;
+import utils.SolicitarDatoValido;
 
 public class Contenedor {
 	public ArrayList<IAsesoria> asesorias;
 	public List<Capacitacion> capacitaciones;
 	Usuario usuario;
 	IPrintPantalla print;
-	private ValidarDatos dato = new ValidarDatos();
+	private SolicitarDatoValido dato = new SolicitarDatoValido();
 	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public Contenedor() {
@@ -30,6 +31,7 @@ public class Contenedor {
 
 	public void almacenarCliente(Scanner input) {
 		Cliente cliente = new Cliente();
+		input.nextLine();
 		cliente.setNombre(dato.solicitarRangoValido("Nombre", input, 10, 30));
 		cliente.setFechaNacimiento(dato.solicitarFechaValida("Fecha de Nacimiento (dd/mm/yyyy)", input));
 		cliente.setRun(dato.solicitarRutValido("Run", input));
