@@ -128,7 +128,7 @@ public class ValidarDatos {
 		return retorno;
 	}
 
-    private boolean esDiaValido(String dia) {
+    public boolean esDiaValido(String dia) {
         String[] diasValidos = {"lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"};
         boolean retorno = false;
         for (String diaValido : diasValidos) {
@@ -139,7 +139,7 @@ public class ValidarDatos {
         return retorno;
     }
     
-    private boolean esHoraValida(String hora) {
+    public boolean esHoraValida(String hora) {
         try {
             String[] partes = hora.split(":");
             int horas = Integer.parseInt(partes[0]);
@@ -150,4 +150,21 @@ public class ValidarDatos {
         }
     }
 
+
+	public boolean validarNumero(String num, int min, int max) {
+		boolean retorno = false;
+		int edadInt;
+		try {
+			edadInt= Integer.valueOf(num);
+			if (edadInt >= min && edadInt < max) {
+				retorno = true;
+			} else {
+				System.out.println("** El dato ingresado debe estar entre " + min + " y " + max);
+			}
+		} catch (Exception e) {
+			System.out.println("Ingresa solo números");
+			retorno = false;
+		}
+		return retorno;
+	}
 }

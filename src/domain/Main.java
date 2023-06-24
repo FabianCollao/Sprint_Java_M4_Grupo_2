@@ -38,8 +38,8 @@ public class Main implements IPrintPantalla {
 				break;
 			case 4:
 				System.out.println("Ingrese los datos de la Capacitación");
-				Capacitacion cap = new Capacitacion();// Crear metodo para pasar el String a int (Rut)
-				contenedor.almacenarCapacitacion(cap);
+				contenedor.almacenarCapacitacion(scanner);
+				System.out.println("Capacitacion agregada con éxito");
 				break;
 			case 5:
 				System.out.println("Ingrese el rut del usuario para su eliminación ");

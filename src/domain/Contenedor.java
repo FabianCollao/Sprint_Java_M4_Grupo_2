@@ -42,6 +42,7 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarCliente(Scanner input) {
+		input.nextLine(); // Limpiando el buffer cache
 		Cliente cliente = new Cliente();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Rut", "Nombres", "Apellidos",
 				"Telefono", "AFP", "Sistema de Salud (Fonasa o Isapre)", "Direccion", "Comuna", "Edad" };
@@ -149,6 +150,7 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarProfesional(Scanner input) {
+		input.nextLine(); // Limpiando el buffer cache
 		Profesional profesional = new Profesional();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Título", "Fecha de ingreso" };
 		String nombre = "", fechaNac = "", run = "", titulo = "", fechaIngreso = "";
@@ -201,6 +203,7 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarAdministrativo(Scanner input) {
+		input.nextLine(); // Limpiando el buffer cache
 		Administrativo admin = new Administrativo();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Área", "Experiencia previa" };
 		String nombre = "", fechaNac = "", run = "", area = "", experienciaPrevia = "";
@@ -250,59 +253,57 @@ public class Contenedor {
 	 */
 
 	public void almacenarCapacitacion(Scanner input) {
-		// permite agregar una nueva capacitación a la lista de instancias de la clase
-		// Capacitación
 
+		input.nextLine(); // Limpiando el buffer cache
 		Capacitacion capacitacion = new Capacitacion();
-		/*
-		 * Capacitación - Identificador: obligatorio, número interno de la capacitación
-		 * manejado por la empresa - RUT cliente: obligatorio - Día: texto, día de la
-		 * semana. Debe ser un valor permitido entre “lunes” y “Domingo” (en ese
-		 * formato) - Hora: debe ser una hora válida del día, en formato HH:MM (hora
-		 * desde 0 a 23, minutos entre 0 y 59) - Lugar: obligatorio, mínimo 10
-		 * caracteres, máximo 50 - Duración: máximo 70 caracteres - Cantidad de
-		 * asistentes: obligatorio, número entero menor que 1000
-		 */
 		String[] atributos = { "Identificador", "RUT Cliente", "dia", "hora", "lugar", "duracion",
 				"cantidad de asistentes" };
 		String identificador = "", rutCliente = "", dia = "", hora = "", lugar = "", duracion = "",
 				cantidadAsistentes = "";
-		//Falta terminar de agregar la capacitacion
+		// Falta terminar de agregar la capacitacion
 		boolean salir = false;
 		for (int i = 0; i < atributos.length; i++) {
 			do {
 				System.out.print("Ingresa " + atributos[i] + ": ");
 				switch (i) {
 				case 0:
-					identificador= input.nextLine().trim();
+					identificador = input.nextLine().trim();
 					salir = dato.validarRangoCaracteres(identificador, 10, 50);
 					break;
 				case 1:
-					fechaNac = input.nextLine().trim();
-					salir = dato.validarFecha(fechaNac);
+					rutCliente = input.nextLine().trim();
+					salir = dato.validarFecha(rutCliente);
 					break;
 				case 2:
-					run = input.nextLine().trim();
-					salir = dato.validarRutRun(run, "run");
+					dia = input.nextLine().trim();
+					salir = dato.esDiaValido(dia);
 					break;
 				case 3:
-					area = input.nextLine().trim();
-					salir = dato.validarRangoCaracteres(area, 5, 20);
+					hora = input.nextLine().trim();
+					salir = dato.esHoraValida(hora);
 					break;
 				case 4:
-					experienciaPrevia = input.nextLine().trim();
-					salir = dato.validarRangoCaracteres(experienciaPrevia, 20, 100);
+					lugar = input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(lugar, 10, 50);
 					break;
+				case 5:
+					duracion = input.nextLine().trim();
+					salir = dato.validarRangoCaracteres(duracion, 10, 50);
+					break;
+				case 6:
+					cantidadAsistentes = input.nextLine().trim();
+					salir = dato.validarNumero(cantidadAsistentes, 1, 1000);
 				}
 			} while (!salir);
 		}
-		admin.setNombre(identificador);
-		admin.setFechaNacimiento(LocalDate.parse(fechaNac, formatter));
-		admin.setRun(Integer.valueOf(run));
-		admin.setArea(area);
-		admin.setExperienciaPrevia(experienciaPrevia);
-		asesorias.add(admin);
-	}capacitaciones.add(capacitacion);
+		capacitacion.setIdentificador(Integer.valueOf(identificador));
+		capacitacion.setRutCliente(Integer.valueOf(rutCliente));
+		capacitacion.setDia(dia);
+		capacitacion.setHora(hora);
+		capacitacion.setLugar(lugar);
+		capacitacion.setDuracion(duracion);
+		capacitacion.setCantidadAsistentes(Integer.valueOf(cantidadAsistentes));
+		capacitaciones.add(capacitacion);
 
 	}
 
@@ -328,7 +329,7 @@ public class Contenedor {
 		for (IAsesoria asesoria : asesorias) {
 			System.out.println("Usuario #" + i);
 			i++;
-			System.out.println(asesoria.analizarUsuario());
+			System.out.println(asesoria.toString());
 		}
 	}
 
