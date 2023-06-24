@@ -42,7 +42,6 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarCliente(Scanner input) {
-		input.nextLine(); // Limpiando el buffer cache
 		Cliente cliente = new Cliente();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Rut", "Nombres", "Apellidos",
 				"Telefono", "AFP", "Sistema de Salud (Fonasa o Isapre)", "Direccion", "Comuna", "Edad" };
@@ -150,7 +149,6 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarProfesional(Scanner input) {
-		input.nextLine(); // Limpiando el buffer cache
 		Profesional profesional = new Profesional();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Título", "Fecha de ingreso" };
 		String nombre = "", fechaNac = "", run = "", titulo = "", fechaIngreso = "";
@@ -203,7 +201,6 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void almacenarAdministrativo(Scanner input) {
-		input.nextLine(); // Limpiando el buffer cache
 		Administrativo admin = new Administrativo();
 		String[] atributos = { "Nombre", "Fecha de Nacimiento (dd/mm/yyyy)", "Run", "Área", "Experiencia previa" };
 		String nombre = "", fechaNac = "", run = "", area = "", experienciaPrevia = "";
@@ -253,8 +250,6 @@ public class Contenedor {
 	 */
 
 	public void almacenarCapacitacion(Scanner input) {
-
-		input.nextLine(); // Limpiando el buffer cache
 		Capacitacion capacitacion = new Capacitacion();
 		String[] atributos = { "Identificador", "RUT Cliente", "dia (entre lunes y domingo)", "hora (hh:mm)", "lugar",
 				"duracion", "cantidad de asistentes" };
@@ -327,11 +322,30 @@ public class Contenedor {
 	 * @param input Scanner para la entrada de datos.
 	 */
 	public void eliminarUsuario(Scanner input) {
-		Usuario buscar = new Usuario(input.nextInt());
-		for (int i = 0; i < asesorias.size(); i++) {
-			if (asesorias.get(i).analizarUsuario() == buscar.getRun()) {
-				asesorias.remove(i);
+		int run=0;
+		boolean eliminado=false;
+		if(!asesorias.isEmpty()) {
+			System.out.print("Ingrese el rut del usuario para su eliminación: ");
+			String entrada=input.nextLine();
+			try {
+				run= Integer.valueOf(entrada);
+			}catch (Exception e) {
+				System.out.println("** Ingresa un rut válido **");
+			} finally {
+				Usuario buscar = new Usuario(run);
+				for (int i = 0; i < asesorias.size(); i++) {
+					if (asesorias.get(i).getRun() == buscar.getRun()) {
+						asesorias.remove(i);
+						eliminado=true;
+						System.out.println("Usuario eliminado con éxito");
+					}
+				}
+				if(!eliminado) {
+					System.out.println("No se encontró el usuario con el rut "+ buscar.getRun());
+				}
 			}
+		}else {
+			System.out.println("** No hay usuarios registrados **");
 		}
 	}
 
@@ -340,10 +354,14 @@ public class Contenedor {
 	 */
 	public void listarUsuarios() {
 		int i = 1;
-		for (IAsesoria asesoria : asesorias) {
-			System.out.println("Usuario #" + i);
-			i++;
-			System.out.println(asesoria.toString());
+		if(asesorias.isEmpty()) {
+			System.out.println("No hay ningun usuario registrado");
+		}else {
+			for (IAsesoria asesoria : asesorias) {
+				System.out.println("Usuario #" + i);
+				i++;
+				System.out.println(asesoria.mostrarUsuario());
+			}
 		}
 	}
 
@@ -354,7 +372,7 @@ public class Contenedor {
 	 */
 	public void listarusuariosPorTipo(String tipo) {
 		if (asesorias.isEmpty()) {
-			System.out.println("** No hay nigun usuario registrado **");
+			System.out.println("** No hay ningun usuario registrado **");
 		} else {
 			if (tipo != null) {
 				for (IAsesoria asesoria : asesorias) {
@@ -367,10 +385,12 @@ public class Contenedor {
 					} else if (tipo.toLowerCase().equals("administrativo") && asesoria instanceof Administrativo) {
 						System.out.println(" Usuario del tipo Administrativo: ");
 						System.out.println(asesoria);
+					}else {
+						System.out.println("No hay usuarios del tipo "+tipo);
 					}
 				}
 			} else {
-				System.out.println("Opcion no válida");
+				System.out.println("**** Opcion no válida");
 			}
 		}
 	}
@@ -380,12 +400,18 @@ public class Contenedor {
 	 * a cada una.
 	 */
 	public void listarCapacitaciones() {
-		for (Capacitacion capacitaciones : capacitaciones) {
-			System.out.println(capacitaciones);
-			for (IAsesoria asesoria : asesorias) {
-				System.out.println(" Datos del Cliente de esta capacitacion: ");
-				if (asesoria instanceof Cliente && ((Cliente) asesoria).getRun() == capacitaciones.getRutCliente()) {
-					System.out.println(asesoria);
+		if(capacitaciones.isEmpty()) {
+			System.out.println("********* No hay registro de capacitaciones");
+		}else {
+			for (Capacitacion capacitacion : capacitaciones) {
+				System.out.println(capacitacion);
+				for (IAsesoria asesoria : asesorias) {
+					if (asesoria instanceof Cliente && ((Cliente) asesoria).getRut() == capacitacion.getRutCliente()) {
+						System.out.println(" Datos del Cliente de esta capacitacion: ");
+						System.out.println(asesoria);
+					}else {
+						System.out.println("********* No se encontró el rut del cliente registrado, rut "+capacitacion.getRutCliente());
+					}
 				}
 			}
 		}
