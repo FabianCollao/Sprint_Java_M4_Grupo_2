@@ -123,6 +123,6 @@ public class Cliente extends Usuario {
 	public int analizarUsuario() {
 		super.analizarUsuario();
 		System.out.println(" Dirección: " + direccion + "\n Comuna: " + comuna);
-		return rut;
+		return super.getRun();
 	}
 }

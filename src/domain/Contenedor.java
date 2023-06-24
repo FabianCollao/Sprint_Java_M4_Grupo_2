@@ -256,8 +256,8 @@ public class Contenedor {
 
 		input.nextLine(); // Limpiando el buffer cache
 		Capacitacion capacitacion = new Capacitacion();
-		String[] atributos = { "Identificador", "RUT Cliente", "dia (entre lunes y domingo)", "hora (hh:mm)", "lugar", "duracion",
-				"cantidad de asistentes" };
+		String[] atributos = { "Identificador", "RUT Cliente", "dia (entre lunes y domingo)", "hora (hh:mm)", "lugar",
+				"duracion", "cantidad de asistentes" };
 		String identificador = "", rutCliente = "", dia = "", hora = "", lugar = "", duracion = "",
 				cantidadAsistentes = "";
 		// Falta terminar de agregar la capacitacion
@@ -287,7 +287,7 @@ public class Contenedor {
 						System.out.println("Ingresa solo números");
 						salir = false;
 					}
-					
+
 					break;
 				case 2:
 					dia = input.nextLine().trim();
@@ -326,17 +326,6 @@ public class Contenedor {
 	 * 
 	 * @param input Scanner para la entrada de datos.
 	 */
-	/*
-	public void eliminarUsuario(Scanner input) {
-		Usuario buscar = new Usuario(input.nextInt());
-		for (int i = 0; i < asesorias.size(); i++) {
-			if (asesorias.get(i).analizarUsuario() == buscar.getRun()) {
-				asesorias.remove(i);
-			}
-		}
-	}
-	*/
-
 	public void eliminarUsuario(Scanner input) {
 		Usuario buscar = new Usuario(input.nextInt());
 		for (int i = 0; i < asesorias.size(); i++) {
@@ -395,7 +384,7 @@ public class Contenedor {
 			System.out.println(capacitaciones);
 			for (IAsesoria asesoria : asesorias) {
 				System.out.println(" Datos del Cliente de esta capacitacion: ");
-				if (asesoria instanceof Cliente && ((Cliente) asesoria).getRut() == capacitaciones.getRutCliente()) {
+				if (asesoria instanceof Cliente && ((Cliente) asesoria).getRun() == capacitaciones.getRutCliente()) {
 					System.out.println(asesoria);
 				}
 			}
