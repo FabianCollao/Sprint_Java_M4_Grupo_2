@@ -256,7 +256,7 @@ public class Contenedor {
 
 		input.nextLine(); // Limpiando el buffer cache
 		Capacitacion capacitacion = new Capacitacion();
-		String[] atributos = { "Identificador", "RUT Cliente", "dia", "hora", "lugar", "duracion",
+		String[] atributos = { "Identificador", "RUT Cliente", "dia (entre lunes y domingo)", "hora (hh:mm)", "lugar", "duracion",
 				"cantidad de asistentes" };
 		String identificador = "", rutCliente = "", dia = "", hora = "", lugar = "", duracion = "",
 				cantidadAsistentes = "";
@@ -268,11 +268,26 @@ public class Contenedor {
 				switch (i) {
 				case 0:
 					identificador = input.nextLine().trim();
-					salir = dato.validarRangoCaracteres(identificador, 10, 50);
+					try {
+						if (salir = dato.esObligatorio(identificador)) {
+							capacitacion.setIdentificador(Integer.valueOf(identificador));
+						}
+					} catch (Exception e) {
+						System.out.println("Ingresa solo números");
+						salir = false;
+					}
 					break;
 				case 1:
 					rutCliente = input.nextLine().trim();
-					salir = dato.validarFecha(rutCliente);
+					try {
+						if (salir = dato.esObligatorio(rutCliente)) {
+							capacitacion.setRutCliente(Integer.valueOf(rutCliente));
+						}
+					} catch (Exception e) {
+						System.out.println("Ingresa solo números");
+						salir = false;
+					}
+					
 					break;
 				case 2:
 					dia = input.nextLine().trim();
@@ -296,7 +311,6 @@ public class Contenedor {
 				}
 			} while (!salir);
 		}
-		capacitacion.setIdentificador(Integer.valueOf(identificador));
 		capacitacion.setRutCliente(Integer.valueOf(rutCliente));
 		capacitacion.setDia(dia);
 		capacitacion.setHora(hora);
@@ -312,6 +326,17 @@ public class Contenedor {
 	 * 
 	 * @param input Scanner para la entrada de datos.
 	 */
+	/*
+	public void eliminarUsuario(Scanner input) {
+		Usuario buscar = new Usuario(input.nextInt());
+		for (int i = 0; i < asesorias.size(); i++) {
+			if (asesorias.get(i).analizarUsuario() == buscar.getRun()) {
+				asesorias.remove(i);
+			}
+		}
+	}
+	*/
+
 	public void eliminarUsuario(Scanner input) {
 		Usuario buscar = new Usuario(input.nextInt());
 		for (int i = 0; i < asesorias.size(); i++) {

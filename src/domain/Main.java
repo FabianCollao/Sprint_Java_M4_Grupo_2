@@ -57,6 +57,8 @@ public class Main implements IPrintPantalla {
 				contenedor.listarusuariosPorTipo(tipo);
 				break;
 			case 8:
+				System.out.println("-Seleccionaste Listar Capacitaciones");
+				contenedor.listarCapacitaciones();
 				break;
 			case 9:
 				System.out.println("Ha seleccionado salir");
