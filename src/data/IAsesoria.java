@@ -12,4 +12,6 @@ public interface IAsesoria {
 	 * @return El identificador del usuario (RUN).
 	 */
 	public int analizarUsuario();
+	public String mostrarUsuario();
+	public int getRun();
 }

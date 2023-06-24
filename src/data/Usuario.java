@@ -132,4 +132,7 @@ public class Usuario implements IAsesoria {
 		int edad = LocalDate.now().getYear() - añoNacimiento;
 		return "“El usuario tiene " + edad + " años”";
 	}
+	public String mostrarUsuario() {
+		return "\n Nombre: " + nombre + "\n Fecha de Nacimiento: " + fechaNacimiento + "\n Run: " + run;
+	}
 }
