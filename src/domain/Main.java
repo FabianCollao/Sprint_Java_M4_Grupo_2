@@ -1,10 +1,12 @@
 package domain;
 
 import java.util.Scanner;
-import data.Capacitacion;
 
 public class Main implements IPrintPantalla {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int op=0;
@@ -13,14 +15,20 @@ public class Main implements IPrintPantalla {
 		Contenedor contenedor = new Contenedor();
 		
 		do {
-			System.out.println("***************** MENÚ ****************** ");
 			System.out.println(" Seleccione una opción del menú para continuar");
+			System.out.println("------------- MENÚ ---------------");
 			System.out
-					.println(" OP 1: Crear Cliente \n" + " OP 2: Crear Profesional \n" + " OP 3: Crear Administrativo\n"
-							+ " OP 4: Crear Capacitación \n" + " OP 5: Eliminar Usuario \n" + " OP 6: Listar Usuarios\n"
-							+ " OP 7: Listar Usuarios por tipo\n" + " OP 8: Listar Capacitaciones \n" + " OP 9: Salir");
+					.println(" | 1.* Crear Cliente            |\n" +
+							 " | 2.* Crear Profesional        |\n" + 
+							 " | 3.* Crear Administrativo     |\n" +
+							 " | 4.* Crear Capacitación       |\n" + 
+							 " | 5.* Eliminar Usuario         |\n" + 
+							 " | 6.* Listar Usuarios          |\n" +
+							 " | 7.* Listar Usuarios por tipo |\n" + 
+							 " | 8.* Listar Capacitaciones    |\n" + 
+							 " | 9.* Salir                    |");
 
-			System.out.println("*******************************************");
+			System.out.println("----------------------------------");
 			System.out.print(":");
 			//Control de error al transformar de string a int
 			entrada = scanner.nextLine();
