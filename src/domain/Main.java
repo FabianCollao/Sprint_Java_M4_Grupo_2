@@ -73,7 +73,6 @@ public class Main implements IPrintPantalla {
 			case 7:
 				System.out.println("-Seleccionaste Listar Usuarios por tipo");
 				System.out.print("Escribe el tipo de usuario (Cliente, Profesional o Administrativo): ");
-				scanner.nextLine(); //Para limpiar el buffer del nextInt
 				String tipo = scanner.nextLine();
 				contenedor.listarusuariosPorTipo(tipo);
 				break;
